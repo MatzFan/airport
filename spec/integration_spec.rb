@@ -10,22 +10,8 @@ require 'plane'
 describe Airport do
 
   let(:airport) { Airport.new(capacity: 6) }
-  let(:p1) { Plane.new }
-  let(:p2) { Plane.new }
-  let(:p3) { Plane.new }
-  let(:p4) { Plane.new }
-  let(:p5) { Plane.new }
-  let(:p6) { Plane.new }
-  let(:planes) {[p1,p2,p3,p4,p5,p6]}
+  let(:planes) { Array.new(6, Plane.new) }
 
-  def land_all_planes
-    loop do
-      planes.each do |plane|
-        plane.permission_to_land(airport)
-      end
-      break if airport.plane_count == 6
-    end
-  end
 
   context "integration test" do
     it 'can land all planes' do

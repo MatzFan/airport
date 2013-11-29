@@ -20,14 +20,12 @@ describe Airport do
     it 'should have one more plane after a plane has landed' do
       airport.stub(:weather_ok?) {true}
       planes_before = airport.plane_count
-      plane = double(:plane)
       airport.arrival(plane)
       expect(airport.plane_count - planes_before).to eq(1)
     end
 
     it 'should have one less plane after a plane has taken off' do
       airport.stub(:weather_ok?) {true}
-      plane = double(:plane)
       airport.arrival(plane)
       planes_before = airport.plane_count
       airport.departure(plane)
@@ -67,7 +65,6 @@ describe Airport do
 
     it 'cannot land a plane in a storm' do
       planes_before = airport.plane_count
-      plane = double(:plane)
       airport.stub(:weather_ok?) {false}
       airport.arrival(plane)
       expect(airport.plane_count).to eq(planes_before)
